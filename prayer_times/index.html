@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>مواقيت الصلاة</title>
+</head>
+
+<body>
+    <div class="main">
+        <h1>مواقيت الصلاة</h1>
+        <p>مكانك المفضل لمعرفة مواقيت الصلاة. فقط ادخل اسم المدينة وستظهر المواقيت بشكل متجدد</p>
+        <!-- <div class="input">
+            <input type="text" placeholder="ادخل اسم المدينة" class="city-input">
+            <p class="error-msg" id="error"></p>
+            <button class="search">بحث</button>
+        </div> -->
+
+        <form class="input">
+            <input type="text" class="country-input" placeholder="ادخل اسم الدولة">
+            <p class="error-msg" id="country-error"></p>
+            <input type="text" class="city-input" placeholder="ادخل اسم المدينة">
+            <p class="error-msg" id="city-error"></p>
+            <button class="search">بحث</button>
+        </form>
+
+        <div class="placeholder"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الفجر</th>
+                    <th>الظهر</th>
+                    <th>العصر</th>
+                    <th>المغرب</th>
+                    <th>العشاء</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="Fajr"></td>
+                    <td id="Dhuhr"></td>
+                    <td id="Asr"></td>
+                    <td id="Maghrib"></td>
+                    <td id="Isha"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

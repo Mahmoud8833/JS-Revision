@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Hadith Explorer</title>
+</head>
+
+<body>
+    <header>
+        <h1>Hadith Explorer</h1>
+    </header>
+
+    <main>
+        <form class="search-section">
+            <input type="text" id="searchInput" placeholder="Search for Hadith..." minlength="3">
+            <select name="books" id="booksSelect">
+                <option value="">All Books</option>
+                <option value="sahih-bukhari">Sahih al-Bukhari</option>
+                <option value="sahih-muslim">Sahih Muslim</option>
+                <option value="al-tirmidhi">Jami' Al-Tirmidhi</option>
+                <option value="abu-dawood">Sunan Abu Dawood</option>
+                <option value="ibn-e-majah">Sunan Ibn-e-Majah</option>
+                <option value="sunan-nasai">Sunan An-Nasa`i</option>
+                <option value="mishkat">Mishkat Al-Masabih</option>
+
+            </select>
+        </form>
+
+        <section class="results-section">
+            <section id="status">
+                <p id="statusMessage" aria-live="polite"></p>
+                <p id="errorMessage" aria-live="assertive"></p>
+            </section>
+            <ul id="resultsList"></ul>
+        </section>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+            aria-describedby="modalDescription" id="hadithModal">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <h2 id="modalTitle">Hadith Details</h2>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hadith Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
