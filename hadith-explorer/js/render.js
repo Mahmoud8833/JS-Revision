@@ -1,33 +1,50 @@
-function getElements(input, select, results, modal) {
-  return [
-    document.querySelector(input),
-    document.querySelector(select),
-    document.querySelector(results),
-    document.querySelector(modal),
-  ];
+const cardMap = new Map();
+
+function getElements() {
+  return {
+    input: document.querySelector('#searchInput'),
+    select: document.querySelector('#booksSelect'),
+    results: document.querySelector('#resultsList'),
+    modal: document.querySelector('#hadithModal'),
+  };
 }
 
 function renderHadithCard(hadith) {
+  const existingCard = cardMap.get(hadith.id);
+  if (existingCard) {
+    return existingCard;
+  }
   const card = document.createElement('li');
+  cardMap.set(hadith.id, card);
   card.className = 'hadith-card';
-  card.innerHTML = `
-    <h3>${hadith.title}</h3>
-    <p>${hadith.description}</p>
-  `;
+  const title = document.createElement('h3');
+  title.textContent = hadith.headingArabic;
+  const description = document.createElement('p');
+  description.textContent = hadith.hadithArabic;
+  card.appendChild(title);
+  card.appendChild(description);
   return card;
 }
 
-function renderHadithsList(hadiths, ...getElements) {
-  const list = getElements[2];
-  list.innerHTML = '';
-  hadiths.forEach((hadith) => {
-    const card = this.renderHadithCard(hadith);
-    list.appendChild(card);
+function renderHadithsList(hadiths, getElements) {
+  const list = getElements.results;
+  cardMap.forEach((card, id) => {
+    if (!hadiths.some((hadith) => hadith.id === id)) {
+      card.remove();
+      cardMap.delete(id);
+    }
+  });
+  hadiths.forEach((hadith, index) => {
+    const card = renderHadithCard(hadith);
+    const currentAtIndex = list.children[index];
+    if (currentAtIndex !== card) {
+      list.insertBefore(card, currentAtIndex || null);
+    }
   });
 }
 
-function renderModal(hadith, ...getElements) {
-  const modal = getElements[3];
+function renderModal(hadith, getElements) {
+  const modal = getElements.modal;
   modal.innerHTML = `
     <h2>${hadith.title}</h2>
     <p>${hadith.description}</p>

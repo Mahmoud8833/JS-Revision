@@ -6,16 +6,9 @@ import {
   renderModal,
 } from './render.js';
 
-const [input, select, resultsList, modal] = getElements(
-  '#searchInput',
-  '#booksSelect',
-  '#resultsList',
-  '#hadithModal',
-);
-
 const hadiths = await fetchHadiths({
-  book: select.value,
-  hadithEnglish: input.value,
+  book: getElements().select.value,
+  hadithEnglish: getElements().input.value,
 });
 
-renderHadithsList(hadiths, input, select, resultsList, modal);
+renderHadithsList(hadiths, getElements());

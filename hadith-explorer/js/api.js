@@ -15,6 +15,7 @@ async function fetchHadiths({ book, hadithEnglish, requestID } = {}) {
     throw new Error(response.status);
   }
   const data = await response.json();
+  console.log('Fetched hadiths:', data.hadiths.data[0]);
   return data.hadiths.data;
 }
 
